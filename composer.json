@@ -1,10 +1,10 @@
 {
-    "name": "duxphp/duxravel-static",
+    "name": "haibase/hairavel-static",
     "type": "library",
-    "description": "Duxravel 前端库",
+    "description": "Hairavel static",
     "authors": [
         {
-            "name": "duxphp"
+            "name": "haiphp"
         }
     ],
     "license": "MIT",
@@ -12,13 +12,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Duxravel\\UI\\Providers\\": "providers/"
+            "Hairavel\\UI\\Providers\\": "providers/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Duxravel\\UI\\Providers\\UIServiceProvider"
+                "Hairavel\\UI\\Providers\\UIServiceProvider"
             ]
         }
     }
