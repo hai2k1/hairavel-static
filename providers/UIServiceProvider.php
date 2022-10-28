@@ -1,9 +1,9 @@
 <?php
 
-namespace Duxravel\UI\Providers;
+namespace Hairavel\UI\Providers;
 
-use Duxravel\Core\Util\Hook;
-use Duxravel\Core\Util\Menu;
+use Hairavel\Core\Util\Hook;
+use Hairavel\Core\Util\Menu;
 use Illuminate\Contracts\Http\Kernel as HttpKernel;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Pagination\Paginator;
