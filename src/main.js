@@ -47,27 +47,27 @@ import color from '../color'
 import Spec from "./components/form/Spec";
 
 const colors = Object.fromEntries(Object.keys(color.light).map(key => {
-    return [key, Object.fromEntries(color.light[key].map((val, index) => {
-        return [index === 0 ? 50 : index * 100, val]
-    }))]
+  return [key, Object.fromEntries(color.light[key].map((val, index) => {
+    return [index === 0 ? 50 : index * 100, val]
+  }))]
 }))
 
 setup({
-    darkMode: 'class',
-    theme: {
-        extend: {
-            colors: {
-                'blackgray': {
-                    1: '#373739',
-                    2: '#313132',
-                    3: '#2a2a2b',
-                    4: '#232324',
-                    5: '#17171a',
-                },
-                ...colors,
-            }
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'blackgray': {
+          1: '#373739',
+          2: '#313132',
+          3: '#2a2a2b',
+          4: '#232324',
+          5: '#17171a',
         },
+        ...colors,
+      }
     },
+  },
 })
 
 
