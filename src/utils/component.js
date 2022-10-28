@@ -1,6 +1,6 @@
 /**
- * 格式化accept
- * @param {*} value 
+ * format accept
+ * @param {*} value
  */
 export const formatType = (type) => {
     const types = type instanceof Array ? type : type.split(',')

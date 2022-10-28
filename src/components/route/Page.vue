@@ -242,25 +242,25 @@ export default {
   mounted() {},
   data() {
     return {
-      logo: logo,
-      // 左侧菜单
-      menu: [],
-      // app
-      apps: [],
-      // 当前路由
-      currentUrl: location.pathname + location.search,
-      // 弹出路由合集
-      dialogRouter: [],
-      // 当前选中的菜单
-      currentIndexs: [],
-      // 站点信息
-      appInfo: window.appConfig,
-      // 用户信息
-      userInfo: {},
-      // 颜色模式
-      darkMode: localStorage.getItem("darkMode") === "dark" ? "dark" : "light",
-      // 菜单显示开关
-      menuShow: true,
+        logo: logo,
+        // left menu
+        menu: [],
+        // app
+        apps: [],
+        // current route
+        currentUrl: location.pathname + location.search,
+        // pop up the route collection
+        dialogRouter: [],
+        // currently selected menu
+        currentIndexs: [],
+        // Site Information
+        appInfo: window.appConfig,
+        // User Info
+        userInfo: {},
+        // color mode
+        darkMode: localStorage.getItem("darkMode") === "dark" ? "dark" : "light",
+        // menu display switch
+        menuShow: true,
     };
   },
 
@@ -280,147 +280,147 @@ export default {
       menuNavigation.emit(getSelect());
     },
   },
-  created() {
-    // 监听路由改变
-    event.add("router-change", ({ url, pathChange, agree }) => {
-      if (pathChange || ["push", "replace", "popstate"].includes(agree)) {
-        this.currentUrl = url;
-        this.menuHover();
-      }
-    });
-    // 弹窗key
-    let dialogKey = 0;
-    // 弹出路由
-    event.add("router-dialog", ({ url, mode }) => {
-      this.dialogRouter.push({
-        key: dialogKey++,
-        url,
-        mode,
-      });
-    });
-
-    // 通过request返回值控制选中菜单
-    event.add("request-menu-select", (url) => {
-      this.menuHover(void 0, void 0, url);
-    });
-
-    // 重新加载组件
-    onUserLogin((status) => {
-      if (status) {
-        // 菜单
-        request({
-          url: "menu",
-        }).then((res) => {
-          this.menu = res.list;
-          this.apps = res.apps;
-          this.menuHover();
-          // 跳转到第一个菜单
-          if (this.menu[0].url) {
-            router.indexPage = this.menu[0].url;
-          } else {
-            router.indexPage = this.menu[0].menu[0].menu[0].url;
-          }
-          if (!this.currentIndexs.length && isModuleIndex(this.currentUrl)) {
-            router.replace(router.indexPage);
-          }
-          // 通知加载
-          this.$nextTick(() => {
-            this.startNotify();
-          });
-          if (res.static) {
-            resource.pageLoad(res.static, "app-global-static");
-          }
+    created() {
+        // Listen for route changes
+        event.add("router-change", ({ url, pathChange, agree }) => {
+            if (pathChange || ["push", "replace", "popstate"].includes(agree)) {
+                this.currentUrl = url;
+                this.menuHover();
+            }
         });
-        this.userInfo = getLocalUserInfo();
-      } else {
-        this.userInfo = {};
-      }
-    });
-
-    // 已读操作
-    event.add("app-notify-read", () => {
-      this.readNotify();
-    });
-
-    // 删除操作
-    event.add("app-notify-del", () => {
-      this.delNotify();
-    });
-  },
-  methods: {
-    // 消息通知
-    startNotify() {
-      this.getNotify();
-      setTimeout(() => {
-        this.startNotify();
-      }, 60 * 1000);
-    },
-    getNotify() {
-      request({
-        url: "notification",
-      }).then((res) => {
-        window.dataNotify = {
-          list: res.list,
-          num: res.num,
-        };
-        event.emit("app-notify");
-      });
-    },
-    readNotify() {
-      if (window.dataNotify) {
-        window.dataNotify.list = window.dataNotify.list.map((item) => {
-          item.read = 1;
-          return item;
+        // popup key
+        let dialogKey = 0;
+        // popup route
+        event.add("router-dialog", ({ url, mode }) => {
+            this.dialogRouter.push({
+                key: dialogKey++,
+                url,
+                mode,
+            });
         });
-        window.dataNotify.num = 0;
-      }
-      event.emit("app-notify");
-      request({
-        url: "notification/read",
-      });
-    },
-    delNotify() {
-      window.dataNotify = {
-        list: [],
-        num: 0,
-      };
-      event.emit("app-notify");
-      request({
-        url: "notification/del",
-      });
-    },
 
-    // 关闭路由弹窗
-    closeDialog(index) {
-      const [item] = this.dialogRouter.splice(index, 1);
-      event.emit("router-dialog-close", {
-        item,
-        index,
-      });
+        // Control the selected menu through the request return value
+        event.add("request-menu-select", (url) => {
+            this.menuHover(void 0, void 0, url);
+        });
+
+        // reload the component
+        onUserLogin((status) => {
+            if (status) {
+                // menu
+                request({
+                    url: "menu",
+                }).then((res) => {
+                    this.menu = res.list;
+                    this.apps = res.apps;
+                    this.menuHover();
+                    // jump to the first menu
+                    if (this.menu[0].url) {
+                        router.indexPage = this.menu[0].url;
+                    } else {
+                        router.indexPage = this.menu[0].menu[0].menu[0].url;
+                    }
+                    if (!this.currentIndexs.length && isModuleIndex(this.currentUrl)) {
+                        router.replace(router.indexPage);
+                    }
+                    // notify loading
+                    this.$nextTick(() => {
+                        this.startNotify();
+                    });
+                    if (res.static) {
+                        resource.pageLoad(res.static, "app-global-static");
+                    }
+                });
+                this.userInfo = getLocalUserInfo();
+            } else {
+                this.userInfo = {};
+            }
+        });
+
+        // read operation
+        event.add("app-notify-read", () => {
+            this.readNotify();
+        });
+
+        // delete operation
+        event.add("app-notify-del", () => {
+            this.delNotify();
+        });
     },
-    // 菜单点击
-    target(e) {
-      router.push(e.url || e.menu[0].menu[0].url);
+    methods: {
+        // notification
+        startNotify() {
+            this.getNotify();
+            setTimeout(() => {
+                this.startNotify();
+            }, 60 * 1000);
+        },
+        getNotify() {
+            request({
+                url: "notification",
+            }).then((res) => {
+                window.dataNotify = {
+                    list: res.list,
+                    num: res.num,
+                };
+                event.emit("app-notify");
+            });
+        },
+        readNotify() {
+            if (window.dataNotify) {
+                window.dataNotify.list = window.dataNotify.list.map((item) => {
+                    item.read = 1;
+                    return item;
+                });
+                window.dataNotify.num = 0;
+            }
+            event.emit("app-notify");
+            request({
+                url: "notification/read",
+            });
+        },
+        delNotify() {
+            window.dataNotify = {
+                list: [],
+                num: 0,
+            };
+            event.emit("app-notify");
+            request({
+                url: "notification/del",
+            });
+        },
+
+        // close the routing popup
+        closeDialog(index) {
+            const [item] = this.dialogRouter.splice(index, 1);
+            event.emit("router-dialog-close", {
+                item,
+                index,
+            });
+        },
+        // menu click
+        target(e) {
+            router.push(e.url || e.menu[0].menu[0].url);
+        },
+        // menu selection
+        menuHover(menu = this.menu, indexes = [], url = this.currentUrl) {
+            return menu.findIndex((item, index) => {
+                if (item.menu && item.menu.length > 0) {
+                    if (~this.menuHover(item.menu, [...indexs, index], url)) {
+                        return true;
+                    }
+                } else if (
+                    item.url &&
+                    url.split("?")[0].split("/").slice(0, 4).join("/") ===
+                    item.url.split("?")[0].split("/").slice(0, 4).join("/")
+                ) {
+                    indexes.push(index);
+                    this.currentIndexs = indexes;
+                    return true;
+                }
+            });
+        },
     },
-    // 菜单选中项
-    menuHover(menu = this.menu, indexs = [], url = this.currentUrl) {
-      return menu.findIndex((item, index) => {
-        if (item.menu && item.menu.length > 0) {
-          if (~this.menuHover(item.menu, [...indexs, index], url)) {
-            return true;
-          }
-        } else if (
-          item.url &&
-          url.split("?")[0].split("/").slice(0, 4).join("/") ===
-            item.url.split("?")[0].split("/").slice(0, 4).join("/")
-        ) {
-          indexs.push(index);
-          this.currentIndexs = indexs;
-          return true;
-        }
-      });
-    },
-  },
 };
 </script>
 
