@@ -92,52 +92,52 @@ window.NProgress.configure({
 
 app.use(VueApexCharts)
 
-// 链接组件
+// link component
 app.component('route', Route)
-// 富文本显示组件
+// rich text display component
 app.component('rich-text', RichText)
-// json节点创建组件
+// json node create component
 app.component('node-create', NodeCreate)
-// 图标组件
+// icon component
 app.component('icon', Icon)
-// 表单提交组件
+// form submit component
 app.component('app-form', FormSubmit)
-// 表格展示组件
+// form display component
 app.component('app-table', DataTable)
-// 树形列表
+// tree list
 app.component('widget-tree', Tree)
-// 选择器
+// Selector
 app.component('app-select', DataSelect)
-// 树形选择器
+// tree selector
 app.component('app-tree-select', DataTreeSelect)
-// 级联选择器
+// cascade selector
 app.component('app-cascader', DataCascader)
-// 文件上传
+// File Upload
 app.component('app-file', DataFile)
 app.component('app-files', DataFiles)
 app.component('app-images', DataImages)
-// 编辑器
+// editor
 app.component('app-editor', DataEditor)
-// 动态选择器
+// dynamic selector
 app.component('app-choice', DataChoice)
-// 颜色选择器
+// color picker
 app.component('app-color', DataColor)
-// 地图选择器
+// map selector
 app.component('app-map', DataMap)
 
-// 动态数据
+// dynamic data
 app.component('app-dynamic-data', DynamicData)
 app.component('app-layout', DataLayout)
 app.component('app-dialog', DataDialog)
 app.component('app-image-preview', ImagePreview)
 
-// 规格
+// Specification
 app.component('app-spec', Spec)
 
-// 拖动排序
+// drag to sort
 app.component('draggable', draggable)
 
-// json 查看器
+// json viewer
 app.component('json-viewer', JsonViewer)
 
 
