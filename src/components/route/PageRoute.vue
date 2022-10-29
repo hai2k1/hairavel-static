@@ -15,7 +15,7 @@ import { getComp, getPage, resource } from "../../utils/router";
 import { event } from "../../utils/event";
 import { getOffset } from "../../utils/util";
 
-// apply styles
+// 应用样式
 let appStyle;
 
 export default {

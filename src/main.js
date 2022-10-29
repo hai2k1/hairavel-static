@@ -13,19 +13,19 @@ import JsonViewer from 'vue-json-viewer'
 import ArcoVueIcon from '@arco-design/web-vue/es/icon'
 import VueApexCharts from 'vue3-apexcharts'
 import './utils/global'
-// route
+// 路由
 import NodeCreate from './components/route/Create.js'
 import Route from './components/route/Route.vue'
 import DataLayout from './components/route/Layout'
 import DataDialog from './components/route/Dialog'
-// public
+// 公用
 import RichText from './components/common/RichText.vue'
 import Icon from './components/common/Icon.vue'
 import ImagePreview from './components/common/ImagePreview'
-// list
+// 列表
 import DataTable from './components/table/DataTable'
 import Tree from './components/table/Tree'
-// form
+// 表单
 import FormSubmit from './components/form/Form.vue'
 import DataSelect from './components/form/Select'
 import DataTreeSelect from './components/form/TreeSelect'
@@ -71,11 +71,11 @@ setup({
 })
 
 
-// register to the global
+// 注册到全局
 window.Vue = Vue
 window.NProgress = NProgress
 
-// The instance is registered to the global
+// 实例注册到全局
 const app = window.vueApp = Vue.createApp(App)
 
 app.use(ArcoVue)
@@ -83,63 +83,63 @@ app.use(ArcoVueIcon)
 app.use(CScrollbar)
 
 window.NProgress.configure({
-    easing: 'ease',
-    speed: 500, // Increment the speed of the progress bar
-    showSpinner: false, // whether to show loading ico
-    trickleSpeed: 200, // auto increment interval
-    minimum: 0.3 // minimum percentage at initialization
+  easing: 'ease',
+  speed: 500,         // 递增进度条的速度
+  showSpinner: false, // 是否显示加载ico
+  trickleSpeed: 200,  // 自动递增间隔
+  minimum: 0.3        // 初始化时的最小百分比
 });
 
 app.use(VueApexCharts)
 
-// link component
+// 链接组件
 app.component('route', Route)
-// rich text display component
+// 富文本显示组件
 app.component('rich-text', RichText)
-// json node create component
+// json节点创建组件
 app.component('node-create', NodeCreate)
-// icon component
+// 图标组件
 app.component('icon', Icon)
-// form submit component
+// 表单提交组件
 app.component('app-form', FormSubmit)
-// form display component
+// 表格展示组件
 app.component('app-table', DataTable)
-// tree list
+// 树形列表
 app.component('widget-tree', Tree)
-// Selector
+// 选择器
 app.component('app-select', DataSelect)
-// tree selector
+// 树形选择器
 app.component('app-tree-select', DataTreeSelect)
-// cascade selector
+// 级联选择器
 app.component('app-cascader', DataCascader)
-// File Upload
+// 文件上传
 app.component('app-file', DataFile)
 app.component('app-files', DataFiles)
 app.component('app-images', DataImages)
-// editor
+// 编辑器
 app.component('app-editor', DataEditor)
-// dynamic selector
+// 动态选择器
 app.component('app-choice', DataChoice)
-// color picker
+// 颜色选择器
 app.component('app-color', DataColor)
-// map selector
+// 地图选择器
 app.component('app-map', DataMap)
 
-// dynamic data
+// 动态数据
 app.component('app-dynamic-data', DynamicData)
 app.component('app-layout', DataLayout)
 app.component('app-dialog', DataDialog)
 app.component('app-image-preview', ImagePreview)
 
-// Specification
+// 规格
 app.component('app-spec', Spec)
 
-// drag to sort
+// 拖动排序
 app.component('draggable', draggable)
 
-// json viewer
+// json 查看器
 app.component('json-viewer', JsonViewer)
 
 
-
 app.mount('#hairavel-static')
+

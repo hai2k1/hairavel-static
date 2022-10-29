@@ -1,14 +1,14 @@
 import { event } from "./event"
 
 /**
- * preview picture
- * @param {*} images image list
- * @param {*} current current display image
- * @returns
+ * 预览图片
+ * @param {*} images 图片列表
+ * @param {*} current 当前展示图片
+ * @returns 
  */
 export const imagePreview = (images, current) => {
-    event.emit('image-preview-show', {
-        images,
-        current
-    })
+  event.emit('image-preview-show', {
+    images,
+    current
+  })
 }

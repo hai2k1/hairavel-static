@@ -57,63 +57,63 @@
 import { router } from "../../utils/router";
 
 export default {
-    name: "AppMenu",
-    props: {
-        menu: {
-            type: Object,
-            default: () => ({}),
-        },
-        select: {
-            type: Array,
-            default: () => [],
-        },
+  name: "AppMenu",
+  props: {
+    menu: {
+      type: Object,
+      default: () => ({}),
     },
-    data() {
-        return {
-            menuData: {},
-        };
+    select: {
+      type: Array,
+      default: () => [],
     },
-    watch: {
-        menu(data, old) {
-            if (data.name === old?.name) {
-                return;
-            }
-            const page = document.querySelector(".menu-child-root");
-            if (page) {
-                const lastMenu = old.menu ? "menu" : "empty";
-                const currentMenu = data.menu ? "menu" : "empty";
-                if (lastMenu === "empty" && currentMenu === "menu") {
-                    // show menu
-                    this.menuData = data;
-                    setTimeout(() => {
-                        page.classList.remove("hide");
-                    }, 50);
-                } else if (lastMenu !== "empty" && currentMenu !== "menu") {
-                    // hide the menu
-                    page.classList.add("hide");
-                    setTimeout(() => {
-                        this.menuData = data;
-                    }, 200);
-                } else {
-                    this.menuData = data;
-                    // stay the same
-                    page.classList.add("an-start");
-                    setTimeout(() => {
-                        page.classList.remove("an-start");
-                    }, 5);
-                }
-            }
-        },
+  },
+  data() {
+    return {
+      menuData: {},
+    };
+  },
+  watch: {
+    menu(data, old) {
+      if (data.name === old?.name) {
+        return;
+      }
+      const page = document.querySelector(".menu-child-root");
+      if (page) {
+        const lastMenu = old.menu ? "menu" : "empty";
+        const currentMenu = data.menu ? "menu" : "empty";
+        if (lastMenu === "empty" && currentMenu === "menu") {
+          // 显示菜单
+          this.menuData = data;
+          setTimeout(() => {
+            page.classList.remove("hide");
+          }, 50);
+        } else if (lastMenu !== "empty" && currentMenu !== "menu") {
+          // 隐藏菜单
+          page.classList.add("hide");
+          setTimeout(() => {
+            this.menuData = data;
+          }, 200);
+        } else {
+          this.menuData = data;
+          // 维持不变
+          page.classList.add("an-start");
+          setTimeout(() => {
+            page.classList.remove("an-start");
+          }, 5);
+        }
+      }
     },
-    methods: {
-        // menu click
-        target(e) {
-            e.app !== "app" && router.push(e.url);
-        },
-        routeUrl() {
-            return this.menu.route + window.location.search;
-        },
+  },
+  methods: {
+    // 菜单点击
+    target(e) {
+      e.app !== "app" && router.push(e.url);
     },
+    routeUrl() {
+      return this.menu.route + window.location.search;
+    },
+  },
 };
 </script>
 

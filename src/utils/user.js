@@ -4,99 +4,99 @@ import { moduleName } from './router'
 const userInfoKey = () => moduleName() + 'UserInfo'
 
 /**
- * call login
+ * 调用登录
  * @returns
  */
 export const login = () => {
-    event.emit('open-login')
-    return new Promise((resolve, reject) => {
-        const callback = () => {
-            event.remove('login-success', callback)
-            resolve()
-        }
-        event.add('login-success', callback)
-    })
+  event.emit('open-login')
+  return new Promise((resolve, reject) => {
+    const callback = () => {
+      event.remove('login-success', callback)
+      resolve()
+    }
+    event.add('login-success', callback)
+  })
 }
 
 /**
- * Get local user information
+ * 获取本地用户信息
  * @returns
  */
 export const getLocalUserInfo = () => {
-    const userInfo = localStorage.getItem(userInfoKey())
-    if (userInfo) {
-        try {
-            return JSON.parse(userInfo)
-        } catch (error) {
-            return {}
-        }
-    } else {
-        return {}
+  const userInfo = localStorage.getItem(userInfoKey())
+  if (userInfo) {
+    try {
+      return JSON.parse(userInfo)
+    } catch (error) {
+      return {}
     }
+  } else {
+    return {}
+  }
 }
 
 /**
- * Set local user information
+ * 设置本地用户信息
  * @param {*} info
  */
 export const setLocalUserInfo = info => {
-    localStorage.setItem(userInfoKey(), JSON.stringify({ ...getLocalUserInfo(), ...info }))
+  localStorage.setItem(userInfoKey(), JSON.stringify({ ...getLocalUserInfo(), ...info }))
 }
 
 /**
- * Clear user information
+ * 清除用户信息
  */
 export const clearUserInfo = () => {
-    localStorage.removeItem(userInfoKey())
+  localStorage.removeItem(userInfoKey())
 }
 
 /**
- * sign out
+ * 退出登录
  */
 export const loginOut = () => {
-    clearUserInfo()
-    const modName = moduleName()
-    onUserLoginFunc.forEach(func => func(false))
-    window.location.replace(modName ? `/${modName}` : '/')
+  clearUserInfo()
+  const modName = moduleName()
+  onUserLoginFunc.forEach(func => func(false))
+  window.location.replace(modName ? `/${modName}` : '/')
 }
 
 /**
- * Whether the administrator is already logged in
+ * 管理员是否已经登录
  * @returns
  */
 export const isLogin = () => {
-    const userInfo = getLocalUserInfo()
-    return !!userInfo.user_id
+  const userInfo = getLocalUserInfo()
+  return !!userInfo.user_id
 }
 
-// Callback
+// 回调函数
 const onUserLoginFunc = []
 /**
- * Monitor user login behavior
+ * 监听用户登录行为
  */
 event.add('login-success', () => {
-    onUserLoginFunc.forEach(func => func(true))
+  onUserLoginFunc.forEach(func => func(true))
 })
 /**
- * Monitor user login status true login false logout
+ * 监听用户登录状态 true登录 false退出登录
  * @param {*} callback
  */
 export const onUserLogin = callback => {
-    if (isLogin()) {
-        callback(true)
-    }
-    onUserLoginFunc.push(callback)
+  if (isLogin()) {
+    callback(true)
+  }
+  onUserLoginFunc.push(callback)
 }
 
 /**
- * Stop monitoring user login status
+ * 停止监听用户登录状态
  * @param {*} callback
  */
 export const offUserLogin = callback => {
-    if (typeof callback === 'function') {
-        const index = onUserLoginFunc.findIndex(v => v === callback)
-        ~index && onUserLoginFunc.splice(index, 1)
-    } else {
-        onUserLoginFunc.splice(0)
-    }
+  if (typeof callback === 'function') {
+    const index = onUserLoginFunc.findIndex(v => v === callback)
+    ~index && onUserLoginFunc.splice(index, 1)
+  } else {
+    onUserLoginFunc.splice(0)
+  }
 }

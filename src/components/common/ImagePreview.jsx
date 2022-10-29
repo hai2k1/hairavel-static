@@ -28,6 +28,11 @@ export default defineComponent({
 
 
 export const ImagePreview = defineComponent({
+  methods: {
+    click() {
+
+    }
+  },
   data() {
     return {
       images: [],
@@ -49,8 +54,7 @@ export const ImagePreview = defineComponent({
   methods: {
     close() {
       this.dialogShow = false
-    },
-      click() {}
+    }
   },
   render() {
     return <a-modal

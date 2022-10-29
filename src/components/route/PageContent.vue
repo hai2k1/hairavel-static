@@ -10,12 +10,13 @@
   <a-modal
     v-else-if="mode === 'modal'"
     v-model:visible="dialogShow"
-    modalClass="page-dialog max-w-2xl w-full"
+    :modalClass="'page-dialog max-w-2xl w-full ' + className"
     :closable="false"
     :mask="true"
     :footer="false"
     :alignCenter="false"
     @before-close="dialogClose"
+    style="z-index: 200"
   >
     <div ref="dialogAnimation" class="dialog-animation">
       <PageRoute
@@ -30,11 +31,12 @@
   <a-drawer
     v-else
     v-model:visible="dialogShow"
-    class="page-drawer"
+    :class="'page-drawer ' + className"
     :mask="true"
     :footer="false"
     :width="350"
     @before-close="dialogClose"
+    style="z-index: 200"
     @cancel="
       () => {
         this.changeRouter('', 'back');
@@ -68,11 +70,13 @@ export default {
       type: String,
       default: "modal",
     },
+    className: String,
   },
   components: {
     PageRoute,
   },
   data() {
+    console.log(this.className)
     return {
       url: "",
       // 记录窗口里面的路由历史
@@ -206,17 +210,18 @@ export default {
 }
 
 .page-dialog .arco-modal-body {
-    padding: 0;
+  padding: 0;
 }
 
 .page-drawer {
 }
 
 .page-drawer .arco-drawer-header {
-    display: none;
+  display: none;
 }
 
 .page-drawer .arco-drawer-body {
-    padding: 0;
+  padding: 0;
 }
 </style>
+
