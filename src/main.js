@@ -13,19 +13,19 @@ import JsonViewer from 'vue-json-viewer'
 import ArcoVueIcon from '@arco-design/web-vue/es/icon'
 import VueApexCharts from 'vue3-apexcharts'
 import './utils/global'
-// 路由
+// route
 import NodeCreate from './components/route/Create.js'
 import Route from './components/route/Route.vue'
 import DataLayout from './components/route/Layout'
 import DataDialog from './components/route/Dialog'
-// 公用
+// public
 import RichText from './components/common/RichText.vue'
 import Icon from './components/common/Icon.vue'
 import ImagePreview from './components/common/ImagePreview'
-// 列表
+// list
 import DataTable from './components/table/DataTable'
 import Tree from './components/table/Tree'
-// 表单
+// form
 import FormSubmit from './components/form/Form.vue'
 import DataSelect from './components/form/Select'
 import DataTreeSelect from './components/form/TreeSelect'
@@ -84,10 +84,10 @@ app.use(CScrollbar)
 
 window.NProgress.configure({
   easing: 'ease',
-  speed: 500,         // 递增进度条的速度
-  showSpinner: false, // 是否显示加载ico
-  trickleSpeed: 200,  // 自动递增间隔
-  minimum: 0.3        // 初始化时的最小百分比
+    speed: 500, // Increment the speed of the progress bar
+    showSpinner: true, // whether to show loading ico
+    trickleSpeed: 200, // auto increment interval
+    minimum: 0.3 // minimum percentage at initialization
 });
 
 app.use(VueApexCharts)
