@@ -28,7 +28,7 @@ export default {
       chart: {
         locales: [
           {
-            name: "en-US",
+            name: "zh-CN",
               options: {
                   months: [
                       "January",
