@@ -1,5 +1,5 @@
 <template>
-  <a-config-provider :locale="zhCN">
+  <a-config-provider :locale="enUS">
     <div id="app" class="bg-gray-100 dark:bg-blackgray-1">
       <Page :show="show" />
     </div>
@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import zhCN from "@arco-design/web-vue/es/locale/lang/zh-cn";
+import enUS from '@arco-design/web-vue/es/locale/lang/en-us';
 import Page from "./components/route/Page.vue";
 import { event } from "./utils/event";
 
@@ -19,7 +19,7 @@ export default {
   data() {
     return {
       show: true,
-      zhCN,
+        enUS,
     };
   },
   created() {
@@ -28,67 +28,67 @@ export default {
       chart: {
         locales: [
           {
-            name: "zh-CN",
-            options: {
-              months: [
-                "一月",
-                "二月",
-                "三月",
-                "四月",
-                "五月",
-                "六月",
-                "七月",
-                "八月",
-                "九月",
-                "十月",
-                "十一月",
-                "十二月",
-              ],
-              shortMonths: [
-                "一月",
-                "二月",
-                "三月",
-                "四月",
-                "五月",
-                "六月",
-                "七月",
-                "八月",
-                "九月",
-                "十月",
-                "十一月",
-                "十二月",
-              ],
-              days: [
-                "星期日",
-                "星期一",
-                "星期二",
-                "星期三",
-                "星期四",
-                "星期五",
-                "星期六",
-              ],
-              shortDays: [
-                "周日",
-                "周一",
-                "周二",
-                "周三",
-                "周四",
-                "周五",
-                "周六",
-              ],
-              toolbar: {
-                exportToSVG: "下载 SVG",
-                exportToPNG: "下载 PNG",
-                exportToCSV: "下载 CSV",
-                menu: "菜单",
-                selection: "选择",
-                selectionZoom: "选择大小",
-                zoomIn: "放大",
-                zoomOut: "缩小",
-                pan: "移动",
-                reset: "重置",
+            name: "en-US",
+              options: {
+                  months: [
+                      "January",
+                      "February",
+                      "March",
+                      "April",
+                      "May",
+                      "June",
+                      "July",
+                      "August",
+                      "September",
+                      "October",
+                      "November",
+                      "December",
+                  ],
+                  shortMonths: [
+                      "January",
+                      "February",
+                      "March",
+                      "April",
+                      "May",
+                      "June",
+                      "July",
+                      "August",
+                      "September",
+                      "October",
+                      "November",
+                      "December",
+                  ],
+                  days: [
+                      "Sunday",
+                      "Monday",
+                      "Tuesday",
+                      "Wednesday",
+                      "Thursday",
+                      "Friday",
+                      "Saturday",
+                  ],
+                  shortDays: [
+                      "Sunday",
+                      "on Monday",
+                      "Tuesday",
+                      "Wednesday",
+                      "Thursday",
+                      "Friday",
+                      "Saturday",
+                  ],
+                  toolbar: {
+                      exportToSVG: "Download SVG",
+                      exportToPNG: "Download PNG",
+                      exportToCSV: "Download CSV",
+                      menu: "Menu",
+                      selection: "selection",
+                      selectionZoom: "Selection size",
+                      zoomIn: "Zoom in",
+                      zoomOut: "zoom out",
+                      pan: "move",
+                      reset: "Reset",
+                  },
               },
-            },
           },
         ],
         fontFamily: "inherit",
