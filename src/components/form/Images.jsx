@@ -155,7 +155,7 @@ export default defineComponent({
               <div class="text-gray-600 hover:text-blue-600 absolute flex items-center justify-center w-full h-full bg-gray-100  hover:bg-gray-200 dark:bg-blackgray-1 dark:hover:bg-blackgray-2 rounded cursor-pointer">
                 <div class="flex items-center flex-col justify-center ">
                   <icon-upload class="text-2xl"/>
-                  <div class="mt-2 text-xs">上传图片</div>
+                  <div class="mt-2 text-xs">Upload image</div>
                 </div>
               </div>
             </div>

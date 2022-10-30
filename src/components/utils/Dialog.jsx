@@ -34,7 +34,7 @@ export default defineComponent({
     if (this.type === 'prompt') {
       return <a-modal
         visible={this.show}
-        title={this.title || '请输入内容'}
+        title={this.title || 'Please enter content'}
         vModel={[this.show, 'visible']}
         onOk={() => {
           this.$emit('update:value', this.modelValue)

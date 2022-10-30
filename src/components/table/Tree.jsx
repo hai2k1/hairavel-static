@@ -4,7 +4,7 @@ import { request, searchQuick } from '../../utils/request'
 import { requestEvent } from '../../utils/event'
 
 /**
- * 将展开的级别keys保存在本地
+ * Save the expanded level keys locally
  */
 const treeExpanded = {
   key: 'treeExpandedKeysData',
@@ -111,12 +111,12 @@ export default defineComponent({
     requestEvent.add(this.requestEventName, this.requestEvent)
   },
   beforeUnmount() {
-    // 保存key
+      // save key
     treeExpanded.set(this.expandedKeysName(), this.expandedKeys)
     requestEvent.remove(this.requestEventName, this.requestEvent)
   },
   methods: {
-    // 通过key递归查找节点
+    // Find nodes recursively by key
     loopData(key, callback, data = this.data, parent = null) {
       data.some((item, index, arr) => {
         if (item[this.fieldNames.key] === key) {
@@ -129,11 +129,11 @@ export default defineComponent({
         return false;
       });
     },
-    // 获取展开状态保存名称
+    // Get expanded state save name
     expandedKeysName(oldFilter) {
       return this.expandedKeysNamePrefix + '-' + this.url + '-' + qs.stringify(oldFilter || this.filter)
     },
-    // 处理数据以适应tree组件
+    // Process the data to fit the tree component
     renderData(data) {
       let getNodeRoute = (tree, index = 0) => {
         return tree.map(item => {
@@ -154,7 +154,7 @@ export default defineComponent({
       data = getNodeRoute(data)
       return data
     },
-    // 重新生成level
+    // regenerate level
     resetLevel(data = this.data, level = 0) {
       data.forEach(item => {
         item.level = level
@@ -242,12 +242,12 @@ export default defineComponent({
         res = [res]
       }
       res.forEach(action => {
-        // 新增数据到顶级
+        // Add data to top level
         if (action.type === 'add' && !action.parentKey) {
           this.data[action.pos !== 'end' ? 'push' : 'unshift'](this.renderData([action.data])[0])
           return
         }
-        // 新增编辑删除操作
+        // Add edit delete operation
         this.loopData(
           action.type === 'add' ? action.parentKey : action.key,
           (item, index, arr) => {
@@ -300,13 +300,13 @@ export default defineComponent({
         this.loopData(dropNode[this.fieldNames.key], (_, index, arr, parent) => {
           const nodeIndex = dropPosition < 0 ? index : index + 1
           arr.splice(nodeIndex, 0, dragNode)
-          // 上一个
-          sort.before = arr[nodeIndex - 1]?.[this.fieldNames.key] || null
-          // 下一个
-          sort.after = arr[nodeIndex + 1]?.[this.fieldNames.key] || null
-          // 父级
-          sort.parent = parent ? parent[this.fieldNames.key] : null
-          // 改变等级
+            // Previous
+            sort.before = arr[nodeIndex - 1]?.[this.fieldNames.key] || null
+            // Next
+            sort.after = arr[nodeIndex + 1]?.[this.fieldNames.key] || null
+            // Father
+            sort.parent = parent ? parent[this.fieldNames.key] : null
+            // change level
           dragNode.level = parent ? parent.level + 1 : 0
         })
       }
@@ -338,7 +338,7 @@ export default defineComponent({
       {this.data.length > 0 ? <div
         class="flex-grow h-10 app-scrollbar overflow-y-auto overflow-x-hidden"
       >
-        <a-spin class="block flex flex-col h-full" loading={this.loading} tip="加载节点中...">
+        <a-spin class="block flex flex-col h-full" loading={this.loading} tip="load node...">
           <a-tree
             class="app-tree"
             data={this.data}

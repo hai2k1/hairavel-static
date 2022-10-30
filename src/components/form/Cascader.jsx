@@ -28,7 +28,7 @@ export default defineComponent({
     this.modelValue = this.value
   },
   mounted() {
-    // BUG FIX 偶尔会出现搜索输入变小问题
+      // BUG FIX Occasionally there is a problem that the search input becomes smaller
     this.search = true
   },
   watch: {

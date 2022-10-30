@@ -199,7 +199,7 @@ export default {
       loading: true,
       vueComp: "",
     });
-    !isLogin() && message.loading("请稍后");
+    !isLogin() && message.loading("Please wait");
     request({
       url: "login/check",
       method: "GET",
@@ -212,7 +212,7 @@ export default {
             suspensible: false,
           });
           setTimeout(() => {
-            // 执行渲染成功回调
+              // Execute the rendering success callback
             res._didCallback();
           }, 100);
           data.value.loading = false;
@@ -227,7 +227,7 @@ export default {
     event.add("open-login", () => {
       if (!data.value.show) {
         data.value.show = true;
-        window.message.error("登录已失效，请进行登录");
+          window.message.error("Login is invalid, please log in");
       }
     });
 
@@ -269,13 +269,13 @@ export default {
         day = day < 10 ? "0" + day : day;
         let week = date.getDay();
         let weekArr = [
-          "星期日",
-          "星期一",
-          "星期二",
-          "星期三",
-          "星期四",
-          "星期五",
-          "星期六",
+            "Sunday",
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
         ];
         let hour = date.getHours();
         hour = hour < 10 ? "0" + hour : hour;
@@ -283,7 +283,7 @@ export default {
         minute = minute < 10 ? "0" + minute : minute;
         let second = date.getSeconds();
         second = second < 10 ? "0" + second : second;
-        nowDate.value = `${year} 年 ${month} 月 ${day} 日 ${weekArr[week]}`;
+          nowDate.value = `${year} year ${month} month ${day} day ${weekArr[week]}`;
         nowTime.value = `${hour}:${minute}`;
       },
       currentTime() {

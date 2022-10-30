@@ -27,7 +27,7 @@ export default defineComponent({
     method: {
       default: "POST",
       validator(value) {
-        // 这个值必须匹配下列字符串中的一个
+          // This value must match one of the following strings
         return ["POST", "GET", "post", "get"].includes(value);
       },
     },

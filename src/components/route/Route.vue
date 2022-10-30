@@ -71,7 +71,7 @@ export default {
       if (this.type === "ajax") {
         if (this.title) {
           window.dialog.info({
-            title: "确认操作",
+            title: "Confirm the action",
             content: this.title,
             hideCancel: false,
             onOk: () => {
@@ -82,7 +82,7 @@ export default {
           this.ajaxAction();
         }
       } else if (this.type === "dialog") {
-        // 弹出路由
+          // popup route
         this.before && this.before();
         router.dialog(this.href, this.mode, this.modeClass);
         setTimeout(() => {

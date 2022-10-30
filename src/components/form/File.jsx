@@ -76,7 +76,7 @@ export default defineComponent({
         this.$emit('upload', e.response.data[0])
 
       } else if (e.status === 'error') {
-        window.message.error(e.response.message || '上传失败')
+          window.message.error(e.response.message || 'Upload failed')
       }
     },
     fileManage() {
@@ -101,7 +101,7 @@ export default defineComponent({
             <path d="M918.673 883H104.327C82.578 883 65 865.42 65 843.668V335.332C65 313.58 82.578 296 104.327 296h814.346C940.422 296 958 313.58 958 335.332v508.336C958 865.32 940.323 883 918.673 883z" fill="#FFCA28" p-id="9923"></path>
           </svg>
         </div>
-        <div class="text-gray-600 dark:text-gray-400 mt-2">请点击上传或者拖动文件到该处</div>
+        <div class="text-gray-600 dark:text-gray-400 mt-2">Please click to upload or drag the file here</div>
         {this.type !== 'manage' ? <div class="mt-2 relative">
 
           <a-upload
@@ -117,7 +117,7 @@ export default defineComponent({
                   type="primary"
                   loading={this.progress.status}
                 >
-                  {this.progress.status ? <span>上传中 {this.progress.progress}%</span> : (this.value ? '已上传' : '上传文件')}
+                    {this.progress.status ? <span>Uploading {this.progress.progress}%</span> : (this.value ? 'Uploaded' : 'Uploaded file')}
                 </a-button>
               }
             }
@@ -128,7 +128,7 @@ export default defineComponent({
             loading={this.progress.status}
             onClick={this.fileManage}
           >
-            {this.progress.status ? <span>上传中 {this.progress.progress}%</span> : (this.value ? '已上传' : '上传文件')}
+              {this.progress.status ? <span>Uploading {this.progress.progress}%</span> : (this.value ? 'Uploaded' : 'Uploaded file')}
           </a-button>
         </div>}
       </div>
@@ -139,7 +139,7 @@ export default defineComponent({
           width: this.size + 'px',
           height: this.size + 'px',
           backgroundSize: '90%',
-          backgroundImage: `url(${this.value || '/service/image/placeholder/180/180/选择图片'})`
+          backgroundImage: `url(${this.value || '/service/image/placeholder/180/180/Select Image'})`
         }}
       >
         <a-image-preview src={this.value || '/service/image/placeholder/180/180/选择图片'} vModel={[this.visible, 'visible']} />

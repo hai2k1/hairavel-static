@@ -63,11 +63,11 @@ export default defineComponent({
   },
   setup(props) {
 
-    // 格式化数据
+      // format data
     const formatData = (data, replaceKeys = props.columns.filter(v => v.replace)) => {
       return data.map(item => {
         item.__loading = false
-        // 替换keys
+          // replace keys
         if (replaceKeys.length) {
           replaceKeys.forEach(v => {
             item[v.dataIndex] = item[v.dataIndex].replace(v.replace, '')
@@ -80,25 +80,25 @@ export default defineComponent({
       })
     }
 
-    // 选中的列
-    const checkedRowKeys = ref([])
-    // 列表数据
-    const data = ref(formatData(props.defaultData || []))
-    // 排序字段
-    const sort = ref({})
+      // selected column
+      const checkedRowKeys = ref([])
+      // list data
+      const data = ref(formatData(props.defaultData || []))
+      // sort field
+      const sort = ref({})
 
-    // 选中的行数
-    const checkRow = () => checkedRowKeys.value.length
+      // number of selected rows
+      const checkRow = () => checkedRowKeys.value.length
 
-    /**
-     * 默认批量操作方法
-     * @param {*} option
-     * @param {*} title
-     * @param {*} type
-     */
+      /**
+       * Default batch operation method
+       * @param {*} option
+       * @param {*} title
+       * @param {*} type
+       */
     const checkAction = (option, title, type = 'warning') => {
       if (!checkedRowKeys.value.length) {
-        window.message.warning('请选择项目后再进行操作！')
+        window.message.warning('Please select an item before proceeding！')
         return
       }
       const callback = () => {
@@ -127,7 +127,7 @@ export default defineComponent({
       }
       if (title) {
         window.dialog[type]({
-          title: '操作提醒',
+          title: 'Operation reminder',
           content: title,
           hideCancel: false,
           onOk: callback
@@ -157,10 +157,10 @@ export default defineComponent({
       }
     })
 
-    // loading显示
+      // loading display
     const loading = ref(false)
 
-    // 获取列表
+      // get the list
     const getList = (params = {}) => {
       if (props.defaultData) {
         return
@@ -184,7 +184,7 @@ export default defineComponent({
       })
     }
 
-    // 绑定在page插槽上的数据
+      // data bound to the page slot
     const childData = {
       checkedRowKeys,
       checkRow,
@@ -256,14 +256,14 @@ export default defineComponent({
       })
     }
 
-    // 请求事件监听 更新数据
+      // request event listener to update data
     if (props.requestEventName) {
       requestEvent.add(props.requestEventName, requestEventCallBack)
     }
 
 
     /**
-     * 外部控制数据的方法
+     * Methods of external control data
      */
     const tableAction = (type, data) => {
       switch (type) {
@@ -287,37 +287,37 @@ export default defineComponent({
     }
 
     const routerChange = ({ params, agree }) => {
-      // 参数变化重置为第一页
+      // Parameter changes reset to the first page
       if (agree === 'routerPush') {
         pagination.value.current = 1
         getList(params)
       }
     }
 
-    // url自动跟随参数
+    // url automatically follows parameters
     if (props.urlBind) {
-      // 监听路由参数改变重新获取列表数据
+      // Listen to routing parameter changes and re-fetch list data
       event.add('router-change', routerChange)
 
-      // 监听筛选
+      // monitor filter
       watch(props.filter, params => {
-        // 过滤空参数 并且跳转到这个代参数的路由地址
+        // Filter empty parameters and jump to the routing address of this proxy parameter
         router.routerPush(void 0, Object.fromEntries(Object.keys(params).filter(key => params[key] !== null).map(key => [key, params[key]])))
       })
 
-      // 默认跳转到默认的filter选项
+      // Jump to the default filter option by default
       router.routerPush(void 0, Object.fromEntries(Object.keys(props.filter).filter(key => props.filter[key] !== null).map(key => [key, props.filter[key]])))
     } else {
       watch(props.filter, params => {
-        // 跳转第一页
+        // Jump to the first page
         pagination.value.current = 1
-        // 过滤空参数 并且跳转到这个代参数的路由地址
+        // Filter empty parameters and jump to the routing address of this proxy parameter
         getList(params)
       })
       getList(props.filter)
     }
 
-    // 排序
+    // sort
     const sorter = (key, order) => {
       if (!order) {
         sort.value = {}
@@ -332,7 +332,7 @@ export default defineComponent({
       status: false
     })
 
-    // 默认修改数据方法
+    // Default modify data method
     const editValue = (url = this.editUrl, data, index) => {
       if (editStatus.value.status) {
         return

@@ -123,7 +123,7 @@ export default defineComponent({
             {
                 this.sku.map((item, index) => <div className="border-1 border-gray-200  p-3 mt-3">
                     <div className="flex flex-wrap flex-col lg:flex-row gap-4 lg:items-center mb-4">
-                        <div className="flex-none">规格名</div>
+                        <div className="flex-none">Specification name</div>
                         <div className="flex-grow flex flex-col lg:flex-row gap-4 lg:items-center">
                             <div>
                                 <a-input style="width:160px;" vModel={[item.name, 'model-value']}>
@@ -142,7 +142,7 @@ export default defineComponent({
                         </div>
                     </div>
                     <div className="flex flex-wrap flex-col lg:flex-row gap-4 lg:items-center">
-                        <div className="flex-none">规格值</div>
+                        <div className="flex-none">Specification Value</div>
                         <div className="flex-grow">
                             <div className="flex flex-wrap  flex-col lg:flex-row gap-2 lg:items-center">
                                 {
@@ -165,7 +165,7 @@ export default defineComponent({
                                     <div className="relative">
                                         <a-button onClick={() => {
                                             window.appDialog.prompt({
-                                                title: '请输入规格名称',
+                                                title: 'Please enter a specification name',
                                             }).then(value => {
                                                 item.spec.push(value)
                                             })
@@ -208,7 +208,7 @@ export default defineComponent({
                                         </div>
                                     </th>)}
                                     <th className="arco-table-th" width="70" style="text-align: right"><span
-                                        className="arco-table-cell arco-table-cell-align-left flex flex-nowrap "><div className="flex-grow w-20">上架</div></span></th>
+                                        className="arco-table-cell arco-table-cell-align-left flex flex-nowrap "><div className="flex-grow w-20">on the shelf</div></span></th>
                                 </tr>
                                 </thead>
                                 <tbody>

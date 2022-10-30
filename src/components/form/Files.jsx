@@ -66,7 +66,7 @@ export default defineComponent({
         })
         this.$emit('update:value', this.list)
       } else if (e.status === 'error') {
-        window.message.error(e.response.message || '上传失败')
+          window.message.error(e.response.message || 'Upload failed')
       }
     },
     fileManage() {
@@ -109,12 +109,12 @@ export default defineComponent({
             </div>
             <div class="ml-4 flex-shrink-0 flex gap-4">
               <a-link href={item.element.url} target="_blank">
-                下载
+                  Download
               </a-link>
               <a-link status="danger" onClick={() => {
                 this.list.splice(item.index, 1)
               }}>
-                删除
+                  Delete
               </a-link>
             </div>
           </div>,
@@ -131,14 +131,14 @@ export default defineComponent({
                 {
                   {
                     'upload-button': () => <div class="p-3 py-2 flex items-center justify-center cursor-pointer bg-gray-100 hover:bg-gray-200 dark:bg-blackgray-1 dark:hover:bg-blackgray-2 text-gray-600 dark:text-gray-400 ">
-                      {this.progress.status ? <div>已上传 {this.progress.progress}%</div> : '上传附件'}
+                      {this.progress.status ? <div>Uploaded {this.progress.progress}%</div> : 'Upload Attachment'}
                     </div>
                   }
                 }
               </a-upload>
             </div>
             : <div class="p-3 py-2 flex items-center justify-center cursor-pointer bg-gray-100 hover:bg-gray-200 dark:bg-blackgray-1 dark:hover:bg-blackgray-2 text-gray-600 dark:text-gray-400 " onClick={this.fileManage}>
-              上传附件
+                  Upload Attachment
             </div>
         }}
 
