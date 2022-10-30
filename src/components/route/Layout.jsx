@@ -91,7 +91,7 @@ export default defineComponent({
               <a href="http://www.weather.com.cn/" target="_blank" class="dark:hover:bg-blackgray-2 hover:bg-gray-100 p-2 rounded">{this.weather.city} {this.weather.weather} {this.weather.temperature}°</a>
             </div>}
             <div>
-              <a-popover title="消息通知" contentStyle={{ width: '300px' }}>
+              <a-popover title="Notification" contentStyle={{ width: '300px' }}>
                 {{
                   default: () => <a-badge dot count={this.notifyNum} offset={[-4, 5]}><a-button shape="round" type="text" style={{ fontSize: '20px' }}>
                     {{
@@ -103,10 +103,10 @@ export default defineComponent({
                       {this.notify.map((item) => <a-list-item><a-badge count={item.read ? 0 : 1} dot offset={[8, 0]}>{item.message}</a-badge></a-list-item>)}
                     </a-list>
                     <div class="mt-2 flex gap-2 justify-end">
-                      <a-link onClick={this.readNotify}>一键已读</a-link>
-                      <a-link onClick={this.delNotify}>清空消息</a-link>
+                      <a-link onClick={this.readNotify}>One-click read</a-link>
+                      <a-link onClick={this.delNotify}>Clear message</a-link>
                     </div>
-                  </div> : <a-empty description="暂无通知消息" />
+                  </div> : <a-empty description="No notification message yet" />
                 }}
               </a-popover>
             </div>
@@ -135,15 +135,15 @@ export default defineComponent({
                     content: () => <div>
                       <a-doption onClick={() => {
                         window.open("/")
-                      }}>前台首页
+                      }}>Home
                       </a-doption>
                       <a-doption onClick={() => {
                         router.dialog('/' + moduleName() + '/system/user/page/' + this.userInfo.user_id)
-                      }}>修改资料
+                      }}>Modify data
                       </a-doption>
                       <a-doption onClick={() => {
                         loginOut();
-                      }}>退出登录
+                      }}>Logout
                       </a-doption>
                     </div>
                   }
@@ -166,7 +166,7 @@ export default defineComponent({
           {this.form && <div class="flex-none flex gap-2">
             {this.back && <route type="back">
               <a-button type="outline">
-                返回
+                Return
               </a-button>
             </route>}
             {this.save && <a-button type="primary" html-type={this.submit ? 'button' : 'submit'} onClick={this.submit} loading={this.formLoading}>{this.submitText}</a-button>}
