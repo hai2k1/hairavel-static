@@ -333,7 +333,7 @@ export default defineComponent({
           this.searchData(value)
         }}
         class="mb-2 flex-none"
-        placeholder="搜索"
+        placeholder="search"
       />}
       {this.data.length > 0 ? <div
         class="flex-grow h-10 app-scrollbar overflow-y-auto overflow-x-hidden"
