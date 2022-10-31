@@ -28,11 +28,7 @@ export default defineComponent({
 
 
 export const ImagePreview = defineComponent({
-  methods: {
-    click() {
 
-    }
-  },
   data() {
     return {
       images: [],

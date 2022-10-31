@@ -111,7 +111,7 @@ export default defineComponent({
             <a-button type="primary" onClick={() => {
 
                 window.appDialog.prompt({
-                    title: '请输入规格名称',
+                    title: 'Please enter a specification name',
                 }).then(value => {
                     this.sku.push({
                         name: value,

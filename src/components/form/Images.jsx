@@ -56,7 +56,7 @@ export default defineComponent({
         })
         this.$emit('update:value', this.list)
       } else if (e.status === 'error') {
-        window.message.error(e.response.message || '上传失败')
+        window.message.error(e.response.message || 'upload failed')
       }
     },
     fileManage() {
@@ -108,7 +108,7 @@ export default defineComponent({
               <div class="flex-grow flex justify-center text-center hover:text-blue-600 cursor-pointer">
                 <icon-share-alt type="primary" ghost size="small" onClick={() => {
                   window.appDialog.prompt({
-                    title: '更改图片地址',
+                    title: 'Change image address',
                     value: item.element
                   }).then(value => {
                     this.list[item.index] = value
@@ -141,7 +141,7 @@ export default defineComponent({
                         <div class="text-xl"> {this.progress.progress}%</div> :
                         <div class="flex items-center flex-col justify-center ">
                           <icon-upload class="text-2xl"/>
-                          <div class="mt-2">上传图片</div>
+                          <div class="mt-2">upload image</div>
                         </div>}
                       </div>
                     }
