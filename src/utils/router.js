@@ -187,12 +187,12 @@ router.ajax = (url, data) => {
 }
 
 /**
- * 在当前所在的环境里面操作路由，比如在弹窗里面需要关闭路由 
+ * 在当前所在的环境里面操作路由，比如在弹窗里面需要关闭路由
  * router.currentAction('back', 1, this)
  * @param {*} type 类型 "replace", "back", "push"
  * @param {*} url 跳转的路由 如果是back传数字
  * @param {*} that 当前组件导入this
- * @returns 
+ * @returns
  */
 router.currentAction = (type, url, that) => {
   if (!["replace", "back", "push"].includes(type)) {
@@ -307,11 +307,11 @@ export const resource = {
     !asyncLoad && current.num++
   },
 
-  /**
-   * 卸载页面资源
-   * @param {strnig} page 
-   * @param {number} num 要卸载的页面资源个数 默认是1当有大于等于1个相同页面时，将不会卸载当前的资源
-   */
+    /**
+     * Unload page resources
+     * @param {string} page
+     * @param {number} num The number of page resources to be uninstalled. The default is 1. When there is more than or equal to 1 same page, the current resource will not be uninstalled
+     */
   uninstall(page, num = 1) {
     const current = this.pageLoads[page]
     if (!current || current.num > num) {
@@ -362,7 +362,7 @@ export const resource = {
         }
         script.onerror = () => {
           reject({
-            message: list[0] + '加载失败'
+            message: list[0] + 'Failed to load'
           })
         }
         script.src = list[0]
@@ -376,8 +376,8 @@ export const resource = {
 
   /**
    * 异步加载多个css文件
-   * @param {*} list 
-   * @returns 
+   * @param {*} list
+   * @returns
    */
   loadCss(list) {
     const arr = list.filter(href => !this.load[href])
@@ -402,7 +402,7 @@ export const resource = {
         }
         link.onerror = () => {
           reject({
-            message: href + '加载失败'
+            message: href + 'Failed to load'
           })
         }
         link.href = href

@@ -23,12 +23,11 @@ export default {
     };
   },
   created() {
-    // 注册图表
     window.Apex = {
       chart: {
         locales: [
           {
-            name: "zh-CN",
+            name: "en-US",
               options: {
                   months: [
                       "January",
@@ -92,7 +91,7 @@ export default {
           },
         ],
         fontFamily: "inherit",
-        defaultLocale: "zh-CN",
+        defaultLocale: "en-US",
         background: "transparent",
         foreColor: "#373d3f",
       },
@@ -114,7 +113,6 @@ export default {
     );
 
     const config = window.appConfig;
-    // websocket 服务
     if (config.pusher && config.pusher.status) {
     }
   },

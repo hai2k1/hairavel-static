@@ -139,7 +139,7 @@ app.component('draggable', draggable)
 
 // json viewer
 app.component('json-viewer', JsonViewer)
-
+Vue.config.devtools = true
 
 app.mount('#hairavel-static')
 

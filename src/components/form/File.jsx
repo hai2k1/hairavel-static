@@ -179,7 +179,7 @@ export default defineComponent({
               </icon-share-alt>
               <a-modal
                 visible={this.prompt}
-                title='图片地址'
+                title='The maps address'
                 vModel={[this.prompt, 'visible']}
                 onOk={() => {
                   this.$emit('update:value', this.modalValue)
