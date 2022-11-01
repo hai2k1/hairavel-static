@@ -279,7 +279,7 @@ export default defineComponent({
                             }}
                             onChange={this.fileChange}
                             multiple
-                            upload-button={'upload image'}
+                            draggable
                             showFileList={false}
                         >
 
