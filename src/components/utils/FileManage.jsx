@@ -216,12 +216,12 @@ export default defineComponent({
 
         const type = props.type.split(',')
         const types = {
-            all: '全部',
-            image: '图片',
-            video: '视频',
-            audio: '音频',
-            document: '文档',
-            other: '其他'
+            all: 'all',
+            image: 'image',
+            video: 'video',
+            audio: 'audio',
+            document: 'document',
+            other: 'other'
         }
         typeOption.value = type.map(value => ({
             label: types[value],
@@ -290,13 +290,7 @@ export default defineComponent({
                             options={this.typeOption}
                         />
                     </div>}
-                    <div class="w-32">
-                        <a-input
-                            vModel={[this.filter.keyword, 'modelValue']}
-                            type="text"
-                            placeholder="Search"
-                        />
-                    </div>
+
                 </div>
                 <div class="flex-none">
                     <div class="arco-icon-hover arco-icon-hover-size-medium" onClick={this.closeModal}>
