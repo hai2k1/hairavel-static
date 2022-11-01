@@ -278,11 +278,16 @@ export default defineComponent({
                         }}
                         onChange={this.fileChange}
                         multiple
-                        name={'upload image'}
                         showFileList={false}
                     >
+
                         {this.uploadProgress.status ? this.uploadProgress.progress + '%' : 'upload files'}
-                    </a-upload>}
+                        <template upload-button>
+                            <a-space>
+                                <a-button> select file</a-button>
+                            </a-space>
+                        </template>
+                        </a-upload>}
                 </div>
                 <div class="flex-none flex flex-row gap-2">
                     {this.typeOption.length > 1 && <div class="w-32">
