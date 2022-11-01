@@ -279,17 +279,10 @@ export default defineComponent({
                             }}
                             onChange={this.fileChange}
                             multiple
+                            upload-button={'upload image'}
                             showFileList={false}
                         >
-                            <div
-                                class="text-gray-600 dark:text-gray-400 absolute flex items-center justify-center w-full h-full bg-gray-100 hover:bg-gray-200 dark:bg-blackgray-1 dark:hover:bg-blackgray-2 rounded cursor-pointer text-center">
-                                {this.progress.status ?
-                                    <div class="text-xl"> {this.progress.progress}%</div> :
-                                    <div class="flex items-center flex-col justify-center ">
-                                        <icon-upload class="text-2xl"/>
-                                        <div class="mt-2">upload image</div>
-                                    </div>}
-                            </div>
+
                         </a-upload>}
                 </div>
                 <div class="flex-none flex flex-row gap-2">
