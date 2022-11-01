@@ -280,7 +280,8 @@ export default defineComponent({
                         multiple
                         showFileList={false}
                     >
-                        {this.uploadProgress.status ? this.uploadProgress.progress + '%' : 'upload files'}
+                        {/*{this.uploadProgress.status ? this.uploadProgress.progress + '%' : 'upload files'}*/}
+                        upload files
                     </a-upload>}
                 </div>
                 <div class="flex-none flex flex-row gap-2">
@@ -290,7 +291,13 @@ export default defineComponent({
                             options={this.typeOption}
                         />
                     </div>}
-
+                    <div class="w-32">
+                        <a-input
+                            vModel={[this.filter.keyword, 'modelValue']}
+                            type="text"
+                            placeholder="Search"
+                        />
+                    </div>
                 </div>
                 <div class="flex-none">
                     <div class="arco-icon-hover arco-icon-hover-size-medium" onClick={this.closeModal}>
