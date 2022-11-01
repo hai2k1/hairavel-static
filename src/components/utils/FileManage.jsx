@@ -266,23 +266,7 @@ export default defineComponent({
 
             <div class="arco-modal-header flex gap-2">
                 <div class="flex-grow flex flex-row gap-2">
-                    {!!this.filter.id && <a-upload
-                        action={getUrl(this.api.upload)}
-                        accept={this.accept}
-                        headers={{
-                            'Accept': 'application/json',
-                            Authorization: `${getLocalUserInfo().token || ''}`
-                        }}
-                        data={{
-                            id: this.filter.id
-                        }}
-                        onChange={this.fileChange}
-                        multiple
-                        showFileList={false}
-                    >
-                        {/*{this.uploadProgress.status ? this.uploadProgress.progress + '%' : 'upload files'}*/}
-                        upload files
-                    </a-upload>}
+
                 </div>
                 <div class="flex-none flex flex-row gap-2">
                     {this.typeOption.length > 1 && <div class="w-32">
