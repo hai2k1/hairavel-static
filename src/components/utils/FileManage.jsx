@@ -266,27 +266,33 @@ export default defineComponent({
 
             <div class="arco-modal-header flex gap-2">
                 <div class="flex-grow flex flex-row gap-2">
-                    {!!this.filter.id && <a-upload
-                        action={getUrl(this.api.upload)}
-                        accept={this.accept}
-                        headers={{
-                            'Accept': 'application/json',
-                            Authorization: `${getLocalUserInfo().token || ''}`
-                        }}
-                        data={{
-                            id: this.filter.id
-                        }}
-                        onChange={this.fileChange}
-                        multiple
-                        showFileList={false}
-                    >
+                    {!!this.filter.id &&
+                        <a-upload
+                            action={getUrl(this.api.upload)}
+                            accept={this.accept}
+                            headers={{
+                                'Accept': 'application/json',
+                                Authorization: `${getLocalUserInfo().token || ''}`
+                            }}
+                            data={{
+                                id: this.filter.id
+                            }}
+                            onChange={this.fileChange}
+                            multiple
+                            showFileList={false}
+                        >
+                            {{
+                                'upload-button': () => <div class="text-gray-600 dark:text-gray-400 absolute flex items-center justify-center w-full h-full bg-gray-100 hover:bg-gray-200 dark:bg-blackgray-1 dark:hover:bg-blackgray-2 rounded cursor-pointer text-center">
+                                    {this.progress.status ?
+                                        <div class="text-xl"> {this.progress.progress}%</div> :
+                                        <div class="flex items-center flex-col justify-center ">
+                                            <icon-upload class="text-2xl"/>
+                                            <div class="mt-2">upload image</div>
+                                        </div>}
+                                </div>
+                            }}
+                            {this.uploadProgress.status ? this.uploadProgress.progress + '%' : 'upload files'}
 
-                        {this.uploadProgress.status ? this.uploadProgress.progress + '%' : 'upload files'}
-                        <template upload-button>
-                            <a-space>
-                                <a-button> select file</a-button>
-                            </a-space>
-                        </template>
                         </a-upload>}
                 </div>
                 <div class="flex-none flex flex-row gap-2">
