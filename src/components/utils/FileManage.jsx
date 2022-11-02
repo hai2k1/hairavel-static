@@ -279,7 +279,6 @@ export default defineComponent({
                             }}
                             onChange={this.fileChange}
                             multiple
-                            draggable
                             showFileList={false}
                         >
 
