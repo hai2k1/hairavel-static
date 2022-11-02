@@ -11,7 +11,7 @@ export default defineComponent({
       default: () => window.baiduMapAk || 'diaBBBb4lASIa7p4fgYdFZT2NgYdAsOy'
     },
     value: Object,
-    // 模式 select 经纬度选择模式 poi 附近信息选择模式
+      // Mode select latitude and longitude selection mode poi nearby information selection mode
     model: {
       type: String,
       default: 'select'
@@ -25,31 +25,31 @@ export default defineComponent({
   },
   data() {
     return {
-      loadMap: false,
-      selectPointInfo: {},
-      // 位置索索结果
-      searchLocalResult: [],
-      // 位置索索状态
-      searchStatus: false,
-      // poi信息搜索半径
-      poiSearchReadus: 1000,
-      // 是否固定poi时候的中心点
-      poiFixedCenter: false,
-      // poi关键词
-      poiKeyword: '',
-      // poi搜索结果
-      poiList: [],
-      poiListSelect: -1,
-      // 当前中心点
-      poiCenter: {
-        lat: 0,
-        lng: 0,
+        loadMap: false,
+        selectPointInfo: {},
+        // position search result
+        searchLocalResult: [],
+        // position search state
+        searchStatus: false,
+        // poi information search radius
+        poiSearchReadus: 1000,
+        // Whether to fix the center point of poi
+        poiFixedCenter: false,
+        // poi keyword
+        poiKeyword: '',
+        // poi search result
+        poiList: [],
+        poiListSelect: -1,
+        // current center point
+        poiCenter: {
+            lat: 0,
+            lng: 0,
       }
     }
   },
   async mounted() {
     if (!this.ak) {
-      return console.error('百度地图加载错误 未配置密钥')
+        return console.error('Baidu map loading error, no key is configured')
     }
     if (!window.BMapGL) {
       this.loadMap = true
@@ -115,15 +115,15 @@ export default defineComponent({
     this.map.addEventListener('moveend', moveend)
     this.map.addEventListener('zoomend', moveend)
 
-    this.map.enableInertialDragging() // 惯性推拽
-    this.map.enableScrollWheelZoom() // 滚轮缩放
-    this.map.enableContinuousZoom() // 平滑缩放
-    this.map.enablePinchToZoom() // 双指缩放地图
-    this.map.enableResizeOnCenter() // 开启图区resize中心点不变
+      this.map.enableInertialDragging() // inertial dragging
+      this.map.enableScrollWheelZoom() // scroll wheel zoom
+      this.map.enableContinuousZoom() // smooth zoom
+      this.map.enablePinchToZoom() // Pinch to zoom the map
+      this.map.enableResizeOnCenter() // Enable the resize center point of the map area to remain unchanged
 
     const location = new BMapGL.LocationControl()
-    this.map.addControl(location); // 添加定位
-    // 设置中心位置
+      this.map.addControl(location); // add location
+      // set the center position
     if (this.value?.lng && this.value?.lat) {
       if (this.model === 'poi') {
         this.poiFixedCenter = true
