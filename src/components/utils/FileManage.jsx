@@ -279,7 +279,7 @@ export default defineComponent({
                             }}
                             onChange={this.fileChange}
                             multiple
-                            v-html={'<a-button type="primary">upload image</a-button>'}
+                            v-html={'<button class="arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-medium" type="button">Upload file</button>'}
                             showFileList={false}
                         >
 
