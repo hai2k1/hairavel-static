@@ -266,52 +266,35 @@ export default defineComponent({
 
             <div class="arco-modal-header flex gap-2">
                 <div class="flex-grow flex flex-row gap-2">
-                    {/*{!!this.filter.id &&*/}
-                    {/*    <a-upload*/}
-                    {/*        action={getUrl(this.api.upload)}*/}
-                    {/*        accept={this.accept}*/}
-                    {/*        headers={{*/}
-                    {/*            'Accept': 'application/json',*/}
-                    {/*            Authorization: `${getLocalUserInfo().token || ''}`*/}
-                    {/*        }}*/}
-                    {/*        data={{*/}
-                    {/*            id: this.filter.id*/}
-                    {/*        }}*/}
-                    {/*        onChange={this.fileChange}*/}
-                    {/*        multiple*/}
-                    {/*        showFileList={false}*/}
-                    {/*    >*/}
-
-                    {/*    </a-upload>}*/}
-                    <a-upload
-                        action={getUrl(this.api.upload)}
-                        accept={this.accept}
-                        headers={{
-                            'Accept': 'application/json',
-                            Authorization: `${getLocalUserInfo().token || ''}`
-                        }}
-                        data={{
-                            id: this.filter.id
-                        }}
-                        onChange={this.fileChange}
-                        multiple
-                        showFileList={false}
-                        className="block"
-                    >
-                        {
+                    {!!this.filter.id &&
+                        <a-upload
+                            action={getUrl(this.api.upload)}
+                            accept={this.accept}
+                            headers={{
+                                'Accept': 'application/json',
+                                Authorization: `${getLocalUserInfo().token || ''}`
+                            }}
+                            data={{
+                                id: this.filter.id
+                            }}
+                            onChange={this.fileChange}
+                            multiple
+                            showFileList={false}
+                        >
                             {
-                                'upload-button': () => <div
-                                    className="text-gray-600 dark:text-gray-400 absolute flex items-center justify-center w-full h-full bg-gray-100 hover:bg-gray-200 dark:bg-blackgray-1 dark:hover:bg-blackgray-2 rounded cursor-pointer text-center">
-                                    {this.progress.status ?
-                                        <div className="text-xl"> {this.progress.progress}%</div> :
-                                        <div className="flex items-center flex-col justify-center ">
-                                            <icon-upload className="text-2xl"/>
-                                            <div className="mt-2">upload image</div>
-                                        </div>}
-                                </div>
+                                {
+                                    'upload-button': () => <div
+                                        className="text-gray-600 dark:text-gray-400 absolute flex items-center justify-center w-full h-full bg-gray-100 hover:bg-gray-200 dark:bg-blackgray-1 dark:hover:bg-blackgray-2 rounded cursor-pointer text-center">
+                                        {this.progress.status ?
+                                            <div className="text-xl"> {this.progress.progress}%</div> :
+                                            <div className="flex items-center flex-col justify-center ">
+                                                <icon-upload className="text-2xl"/>
+                                                <div className="mt-2">upload</div>
+                                            </div>}
+                                    </div>
+                                }
                             }
-                        }
-                    </a-upload>
+                        </a-upload>}
                 </div>
                 <div class="flex-none flex flex-row gap-2">
                     {this.typeOption.length > 1 && <div class="w-32">
