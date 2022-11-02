@@ -266,7 +266,7 @@ export default defineComponent({
 
             <div class="arco-modal-header flex gap-2">
                 <div class="flex-grow flex flex-row gap-2">
-                    {
+                    {!!this.filter.id &&
                         <a-upload
                             action={getUrl(this.api.upload)}
                             accept={this.accept}
@@ -279,8 +279,10 @@ export default defineComponent({
                             }}
                             onChange={this.fileChange}
                             multiple
+                            v-html={'Upload file'}
                             showFileList={false}
                         >
+
                         </a-upload>}
                 </div>
                 <div class="flex-none flex flex-row gap-2">
