@@ -281,7 +281,13 @@ export default defineComponent({
                             multiple
                             showFileList={false}
                         >
-
+                            {'<template #upload-button>\n' +
+                                '                            <a-space>\n' +
+                                '                                <a-button> select file</a-button>\n' +
+                                '                            only upload one\n' +
+                                '                        </a-button>\n' +
+                                '                        </a-space>\n' +
+                                '                        </template>'}
                         </a-upload>}
                 </div>
                 <div class="flex-none flex flex-row gap-2">
